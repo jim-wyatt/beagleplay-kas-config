@@ -26,7 +26,7 @@ local_conf_header:
     IMAGE_ROOTFS_EXTRA_SPACE = "3000000"
 
   mender-artifact: |
-    MENDER_ARTIFACT_NAME = "${IMAGE_BASENAME}-${MACHINE}-${UUID_SLUG}"
+    MENDER_ARTIFACT_NAME = "${IMAGE_BASENAME}-${MACHINE}-UUID_SLUG"
 
 target:
   - core-image-full-cmdline
