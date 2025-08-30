@@ -1,0 +1,9 @@
+header:
+  version: 14
+
+repos:
+  meta-ti:
+    url: https://git.yoctoproject.org/meta-ti
+    commit: d62c047d4b8424603c6996a5755cf7004bd13254
+    layers:
+      meta-ti-bsp:
