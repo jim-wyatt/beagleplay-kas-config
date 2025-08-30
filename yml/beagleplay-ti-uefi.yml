@@ -1,0 +1,32 @@
+header:
+  version: 14
+  includes:
+  - yml/mender-full.yml
+  - yml/arm.yml
+  - yml/ti.yml
+
+machine: beagleplay-ti
+
+local_conf_header:
+  beagleplay: |
+    MENDER_STORAGE_DEVICE = "/dev/mmcblk0"
+    MENDER_STORAGE_TOTAL_SIZE_MB = "14000"
+    MENDER_PARTITION_ALIGNMENT = "1048576"
+    MENDER_RESERVED_SPACE_BOOTLOADER_DATA = "0"
+    MENDER_UBOOT_ENV_STORAGE_DEVICE_OFFSET = ""
+    MENDER_UBOOT_CONFIG_SYS_MMC_ENV_PART = "1"
+    MENDER_UBOOT_MMC_ENV_LINUX_DEVICE_PATH = "${MENDER_STORAGE_DEVICE}boot0"
+    MENDER_UBOOT_MMC_ENV_LINUX_DEVICE_PATH_REDUND = "${MENDER_STORAGE_DEVICE}boot1"
+    MENDER_UBOOT_ENV_STORAGE_DEVICE_OFFSET_1 = "0x0"
+    MENDER_UBOOT_ENV_STORAGE_DEVICE_OFFSET_2 = "0x0"
+    MENDER_SERVER_URL = "https://hosted.mender.io"
+    MENDER_TENANT_TOKEN = "MENDER_TENANT_TOKEN_SLUG"
+    EXTRA_IMAGE_FEATURES += "debug-tweaks package-management"
+    IMAGE_FSTYPES:remove = "wic wic.bmap mender.bmap sdimg sdimg.bmap"
+    IMAGE_ROOTFS_EXTRA_SPACE = "3000000"
+
+  mender-artifact: |
+    MENDER_ARTIFACT_NAME = "${IMAGE_BASENAME}-${MACHINE}-UUID_SLUG"
+
+target:
+  - core-image-full-cmdline
