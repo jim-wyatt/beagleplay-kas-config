@@ -14,5 +14,8 @@ if [ "$GITHUB_ACTIONS" == "true" ]; then
     sed -i "s/MENDER_TENANT_TOKEN_SLUG/$1/g" yml/beagleplay-ti-uefi.yml
 fi
 
+# Generate a UUID for the Mender artifact name
+sed -i "s/UUID_SLUG/$(uuidgen)/g" yml/beagleplay-ti-uefi.yml
+
 # Build
 kas build yml/beagleplay-ti-uefi.yml
