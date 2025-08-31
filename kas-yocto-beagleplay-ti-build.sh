@@ -4,19 +4,19 @@
 sudo apparmor_parser -R /etc/apparmor.d/unprivileged_userns
 
 # Install python requirements
-python -m venv .
-source ./bin/activate
+python -m venv virtual_env
+source virtual_env/bin/activate
 pip install -r requirements.txt
 
-if [ "$1" == "sd"]; then
+if [ "$1" == "sd" ]; then
     kas build yml/beagleplay-ti-sd.yml
 fi
 
-if [ "$1" == "uefi"]; then
+if [ "$1" == "uefi" ]; then
     kas build yml/beagleplay-ti-uefi.yml
 fi
 
-if ["$1" == "mender"]; then
+if [ "$1" == "mender" ]; then
     # Generate a UUID for the Mender artifact name
     sed -i "s/UUID_SLUG/$(uuidgen)/g" yml/beagleplay-ti-mender.yml
     # Swap Mender token from argument
