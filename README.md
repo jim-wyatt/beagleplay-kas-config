@@ -56,7 +56,7 @@ cd beagleplay-kas-config
 
 1. **Build the SD card image:**
    ```bash
-   kas build beagleplay-ti-sd.yml
+   ./kas-yocto-beagleplay-ti-build.sh sd
    ```
    The resulting SD card image (e.g., `core-image-full-cmdline-beagleplay-ti.sdimg`) will be found in `build/deploy-ti/images/beagleplay-ti/`.
 
@@ -79,7 +79,7 @@ cd beagleplay-kas-config
 
 1. **Build the UEFI image: (on build machine)**
    ```bash
-   kas build beagleplay-ti-uefi.yml
+   ./kas-yocto-beagleplay-ti-build.sh uefi
    ```
    The UEFI image (e.g., `core-image-full-cmdline-beagleplay-ti.uefiimg`) will be in `build/deploy-ti/images/beagleplay-ti/`.
 
@@ -91,7 +91,7 @@ cd beagleplay-kas-config
      ```
 
 3. **Flash the image to eMMC:**
-   - On the BeaglePlay, use the appropriate flashing tool (e.g., `mender`, `dd`, or a provided script) to write the image to the internal eMMC. For Mender images, you may use the Mender client or a custom script.
+   - On the BeaglePlay, use `dd` to write the image to the internal eMMC. For Mender images, you may use the Mender client or a custom script.
    - Example (for raw image):
      ```bash
      sudo dd if=/tmp/core-image-full-cmdline-beagleplay-ti.uefiimg of=/dev/mmcblk0 bs=4M status=progress conv=fsync
@@ -99,12 +99,39 @@ cd beagleplay-kas-config
      ```
    - Power off, remove the SD card, and reboot. The board should now boot from the internal eMMC with the UEFI image.
 
+
 **Note:** Adjust image filenames and device nodes as needed for your setup. Always back up important data before flashing.
 
+---
+
+## Deploying Mender Images (beagleplay-ti-mender.yml)
+
+Once you have bootstrapped your BeaglePlay by booting from an SD card and written a UEFI image to the eMMC, your device is ready to receive and deploy Mender images for over-the-air updates.
+
+1. **Build a Mender image:**
+   On your build machine, run:
+   ```bash
+   ./kas-yocto-beagleplay-ti-build.sh mender
+   ```
+   The resulting Mender artifact (e.g., `core-image-full-cmdline-beagleplay-ti.mender`) will be found in `build/deploy-ti/images/beagleplay-ti/`.
+
+2. **Upload the Mender artifact:**
+   - Log in to your Mender server (e.g., https://hosted.mender.io/).
+   - Go to the Releases section and upload the `.mender` file as a new release.
+
+3. **Deploy the update:**
+   - Approve the deployment to your BeaglePlay device(s) from the Mender UI.
+   - The device will download and install the update on its next check-in.
+
+**Tip:** Make sure your device is connected to the network and enrolled with your Mender server. The Mender client on the device will handle the update process automatically.
+
 ## Configuration Files
+- **beagleplay-ti-mender.yml**: Builds a Mender Release for BeaglePlay. The generated image can be uploaded to a Mender server for deployment. Includes:
+  - `mender-full.yml`, `arm.yml`, `ti.yml`
+  - Custom `local_conf_header` for Mender settings
 - **beagleplay-ti-uefi.yml**: Builds a UEFI image for BeaglePlay with Mender OTA support. The generated image is written to the internal eMMC on the Beagleplay. Includes:
   - `mender-full.yml`, `arm.yml`, `ti.yml`
-  - Custom `local_conf_header` for Mender and image settings
+  - Custom `local_conf_header` for image settings
 - **beagleplay-ti-sd.yml**: Builds an SD card image. The generated images can be written to an SD card and it suitable for bootstrapping a system. Includes:
   - `mender-full.yml`, `arm.yml`, `ti.yml`
   - Custom `local_conf_header` for SD card specifics
