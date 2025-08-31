@@ -4,10 +4,6 @@
 
 This repository provides configuration files and scripts to build custom Linux images for the BeaglePlay board using the Yocto Project and KAS. It integrates support for Mender OTA updates, TI-specific layers, and ARM architecture, enabling robust and reproducible builds for embedded development.
 
-# tldr;
-
-Fork this repo. Create a Github Actions secret named "MENDER_TENANT_TOKEN" with your Mender Organization token from [here](https://hosted.mender.io/ui/settings/organization). Create a "self-hosted" Github Actions Runner per the [docs](https://docs.github.com/en/actions/concepts/runners/self-hosted-runners). Run "CI" Github Action. Flash resulting "uefiimg" artifact to your Beagleplay eMMC or upload the "mender" file as a release on the Mender web application. 
-
 ## Table of Contents
 - [Overview](#overview)
 - [Repository Structure](#repository-structure)
@@ -25,6 +21,7 @@ This project leverages [KAS](https://kas.readthedocs.io/) to simplify and automa
 - `requirements.txt` – Python dependencies for KAS and related tooling.
 - `beagleplay-ti-uefi.yml` – KAS config for building a UEFI image with Mender support.
 - `beagleplay-ti-sd.yml` – KAS config for building an SD card image.
+- `beagleplay-ti-mender.yml` – KAS config for building a Mender release.
 - `mender-base.yml`, `mender-full.yml` – Base and full Mender integration layers.
 - `arm.yml` – ARM architecture meta-layer configuration.
 - `ti.yml` – Texas Instruments meta-layer configuration.
@@ -39,18 +36,16 @@ This project leverages [KAS](https://kas.readthedocs.io/) to simplify and automa
 
 ## Quick Start
 
-### 1. Install Yocto dependencies
-```bash
-sudo apt-get install build-essential chrpath cpio debianutils diffstat file gawk gcc git iputils-ping libacl1 liblz4-tool locales python-is-python3 python3 python3-git python3-jinja2 python3-pexpect python3-pip python3-subunit python3-venv socat texinfo unzip wget xz-utils zstd
-```
+1. **Install Yocto dependencies:**
+   ```bash
+   sudo apt-get install build-essential chrpath cpio debianutils diffstat file gawk gcc git iputils-ping libacl1 liblz4-tool locales python-is-python3 python3 python3-git python3-jinja2 python3-pexpect python3-pip python3-subunit python3-venv socat texinfo unzip wget xz-utils zstd
+   ```
 
-### 2. Clone the repository
-```bash
-git clone https://github.com/jim-wyatt/beagleplay-kas-config.git
-cd beagleplay-kas-config
-```
-
----
+2. **Clone the repository:**
+   ```bash
+   git clone https://github.com/jim-wyatt/beagleplay-kas-config.git
+   cd beagleplay-kas-config
+   ```
 
 ## Bootstrapping BeaglePlay with an SD Card (beagleplay-ti-sd.yml)
 
@@ -72,8 +67,6 @@ cd beagleplay-kas-config
    - Insert the SD card into the BeaglePlay.
    - Hold the BOOT button (if required) and power on the board.
    - The board will boot from the SD card, allowing you to access and configure the system.
-
----
 
 ## Build, Copy, and Flash the UEFI Image (beagleplay-ti-uefi.yml)
 
@@ -101,8 +94,6 @@ cd beagleplay-kas-config
 
 
 **Note:** Adjust image filenames and device nodes as needed for your setup. Always back up important data before flashing.
-
----
 
 ## Deploying Mender Images (beagleplay-ti-mender.yml)
 
