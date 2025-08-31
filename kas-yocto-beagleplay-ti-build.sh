@@ -5,7 +5,7 @@ sudo apparmor_parser -R /etc/apparmor.d/unprivileged_userns
 
 # Install python requirements
 python -m venv .
-source ./bin/activate
+. ./bin/activate
 pip install -r requirements.txt
 
 if [ "$1" == "sd"]; then
