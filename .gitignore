@@ -1,0 +1,7 @@
+build/                                                                                                                               
+meta-arm/
+meta-mender/                                                                                                                         
+meta-openembedded/
+meta-ti/                                                                                                                             
+poky/
+virtual_env/
