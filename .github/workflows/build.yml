@@ -32,7 +32,7 @@ jobs:
         run: |
           sudo apt-get install build-essential chrpath cpio debianutils diffstat file gawk gcc git iputils-ping libacl1 liblz4-tool locales python3 python3-git python3-jinja2 python3-pexpect python3-pip python3-subunit socat texinfo unzip wget xz-utils zstd 
           chmod +x kas-yocto-beagleplay-ti-build.sh
-          ./kas-yocto-beagleplay-ti-build.sh ${{ secrets.MENDER_TENANT_TOKEN }}
+          ./kas-yocto-beagleplay-ti-build.sh mender ${{ secrets.MENDER_TENANT_TOKEN }}
           
       - name: Upload Mender Artifact to Github
         uses: actions/upload-artifact@v4
@@ -40,5 +40,3 @@ jobs:
           name: mender-artifact
           path: |
             build/deploy-ti/images/beagleplay-ti/*-ti-*.mender
-            build/deploy-ti/images/beagleplay-ti/*-ti-*.uefiimg
-

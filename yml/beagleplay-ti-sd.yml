@@ -14,6 +14,6 @@ local_conf_header:
     MENDER_STORAGE_DEVICE = "/dev/mmcblk1"
     MENDER_BOOT_PART_SIZE_MB = "128"
     MENDER_PARTITION_ALIGNMENT = "1048576"
-    IMAGE_FSTYPES:remove = "wic wic.bmap mender.bmap sdimg.bmap"
+    IMAGE_FSTYPES:remove = "wic wic.bmap mender mender.bmap sdimg.bmap uefi uefi.bmap"
     EXTRA_IMAGE_FEATURES += "debug-tweaks"
     CORE_IMAGE_EXTRA_INSTALL += "xz openssh"

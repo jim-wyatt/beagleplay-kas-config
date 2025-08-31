@@ -22,7 +22,7 @@ local_conf_header:
     MENDER_SERVER_URL = "https://hosted.mender.io"
     MENDER_TENANT_TOKEN = "MENDER_TENANT_TOKEN_SLUG"
     EXTRA_IMAGE_FEATURES += "debug-tweaks package-management"
-    IMAGE_FSTYPES:remove = "wic wic.bmap mender mender.bmap sdimg sdimg.bmap"
+    IMAGE_FSTYPES:remove = "wic wic.bmap mender.bmap sdimg sdimg.bmap uefi uefi.bmap"
     IMAGE_ROOTFS_EXTRA_SPACE = "3000000"
 
   mender-artifact: |
