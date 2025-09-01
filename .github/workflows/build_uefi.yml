@@ -30,9 +30,9 @@ jobs:
           chmod +x kas-yocto-beagleplay-ti-build.sh
           ./kas-yocto-beagleplay-ti-build.sh uefi ${{ secrets.MENDER_TENANT_TOKEN }}
           
-      - name: Upload Mender Artifact to Github
+      - name: Upload UEFI Image to Github
         uses: actions/upload-artifact@v4
         with:
-          name: mender-artifact
+          name: uefi-image
           path: |
             build/deploy-ti/images/beagleplay-ti/*-ti-*.uefiimg
