@@ -13,6 +13,8 @@ if [ "$1" == "sd" ]; then
 fi
 
 if [ "$1" == "uefi" ]; then
+    # Swap Mender token from argument
+    sed -i "s/MENDER_TENANT_TOKEN_SLUG/$2/g" yml/beagleplay-ti-mender.yml
     kas build yml/beagleplay-ti-uefi.yml
 fi
 
