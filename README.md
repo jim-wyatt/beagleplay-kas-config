@@ -1,4 +1,4 @@
-[![Build Mender Image](https://github.com/jim-wyatt/beagleplay-kas-config/actions/workflows/build_mender.yml/badge.svg)](https://github.com/jim-wyatt/beagleplay-kas-config/actions/workflows/build_mender.yml)
+[![Build SD Image](https://github.com/jim-wyatt/beagleplay-kas-config/actions/workflows/build_sd.yml/badge.svg)](https://github.com/jim-wyatt/beagleplay-kas-config/actions/workflows/build_sd.yml)[![Build UEFI Image](https://github.com/jim-wyatt/beagleplay-kas-config/actions/workflows/build_uefi.yml/badge.svg)](https://github.com/jim-wyatt/beagleplay-kas-config/actions/workflows/build_uefi.yml)[![Build Mender Image](https://github.com/jim-wyatt/beagleplay-kas-config/actions/workflows/build_mender.yml/badge.svg)](https://github.com/jim-wyatt/beagleplay-kas-config/actions/workflows/build_mender.yml)
 
 # BeaglePlay KAS Yocto Build Configuration
 
