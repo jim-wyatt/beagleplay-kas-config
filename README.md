@@ -7,6 +7,7 @@
 This repository provides configuration files and scripts to build custom Linux images for the BeaglePlay board using the Yocto Project and KAS. It integrates support for Mender OTA updates, TI-specific layers, and ARM architecture, enabling robust and reproducible builds for embedded development.
 
 ## Table of Contents
+- [tldr;](#tldr)
 - [Overview](#overview)
 - [Repository Structure](#repository-structure)
 - [Prerequisites](#prerequisites)
@@ -14,6 +15,30 @@ This repository provides configuration files and scripts to build custom Linux i
 - [Configuration Files](#configuration-files)
 - [Customizing the Build](#customizing-the-build)
 - [References](#references)
+
+
+# tldr;
+
+1. **Bootstrap the BeaglePlay device from SD card:**
+    - Build the SD card image:
+       ```bash
+       ./kas-yocto-beagleplay-ti-build.sh sd
+       ```
+    - Write the image to an SD card and boot the BeaglePlay from it.
+
+2. **Write the UEFI image to the device's eMMC:**
+    - Build the UEFI image:
+       ```bash
+       ./kas-yocto-beagleplay-ti-build.sh uefi <MENDER_TENANT_TOKEN>
+       ```
+    - Copy the UEFI image to the device and flash it to eMMC.
+
+3. **Build and deploy a Mender image for OTA updates:**
+    - Build the Mender artifact:
+       ```bash
+       ./kas-yocto-beagleplay-ti-build.sh mender <MENDER_TENANT_TOKEN>
+       ```
+    - Upload the `.mender` file to your Mender server and deploy it to your device.
 
 ## Overview
 This project leverages [KAS](https://kas.readthedocs.io/) to simplify and automate Yocto builds for the BeaglePlay board. It provides ready-to-use YAML configuration files for different build targets, including UEFI and SD card images, and integrates Mender for over-the-air updates.
