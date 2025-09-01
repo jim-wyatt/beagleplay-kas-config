@@ -1,4 +1,4 @@
-[![CI](https://github.com/jim-wyatt/beagleplay-kas-config/actions/workflows/build_mender.yml/badge.svg)](https://github.com/jim-wyatt/beagleplay-kas-config/actions/workflows/build_mender.yml)
+[![Build Mender Image](https://github.com/jim-wyatt/beagleplay-kas-config/actions/workflows/build_mender.yml/badge.svg)](https://github.com/jim-wyatt/beagleplay-kas-config/actions/workflows/build_mender.yml)
 
 # BeaglePlay KAS Yocto Build Configuration
 
