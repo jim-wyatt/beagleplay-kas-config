@@ -13,7 +13,8 @@ if [[ $# -lt 1 ]]; then
     usage
 fi
 
-# Remove AppArmor restriction (Ubuntu 24.04)
+# Remove AppArmor restriction (Ubuntu 24.04) 
+# see: https://lists.yoctoproject.org/g/yocto/topic/workaround_for_uid_map_error/106192359
 if command -v apparmor_parser &>/dev/null && [[ -f /etc/apparmor.d/unprivileged_userns ]]; then
     sudo apparmor_parser -R /etc/apparmor.d/unprivileged_userns
 fi
