@@ -170,6 +170,8 @@ Once you have bootstrapped your BeaglePlay by booting from an SD card and writte
 - [Mender Documentation](https://docs.mender.io/)
 - [BeaglePlay Board](https://beagleboard.org/play)
 
+*Note: All third-party product names, trademarks, and registered trademarks are the property of their respective owners. The use of these trademarks does not imply any affiliation with or endorsement by their respective owners. All product and company names used in this project are for identification purposes only.*
+
 ---
 
 *Maintained by Jim Wyatt. Contributions welcome!*
