@@ -24,6 +24,7 @@ local_conf_header:
     EXTRA_IMAGE_FEATURES += "debug-tweaks package-management"
     IMAGE_FSTYPES:remove = "wic wic.bmap mender.bmap sdimg sdimg.bmap uefi uefi.bmap"
     IMAGE_ROOTFS_EXTRA_SPACE = "3000000"
+    CORE_IMAGE_EXTRA_INSTALL += "btop"
 
   mender-artifact: |
     MENDER_ARTIFACT_NAME = "${IMAGE_BASENAME}-${MACHINE}-UUID_SLUG"
