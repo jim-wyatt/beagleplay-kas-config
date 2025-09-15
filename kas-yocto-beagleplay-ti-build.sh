@@ -16,7 +16,7 @@ fi
 # Remove AppArmor restriction (Ubuntu 24.04) 
 # see: https://lists.yoctoproject.org/g/yocto/topic/workaround_for_uid_map_error/106192359
 if command -v apparmor_parser &>/dev/null && [[ -f /etc/apparmor.d/unprivileged_userns ]]; then
-    echo 0 > /proc/sys/kernel/apparmor_restrict_unprivileged_userns
+    echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
 fi
 
 # Setup Python virtual environment if not already present
