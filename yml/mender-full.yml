@@ -1,5 +1,5 @@
 header:
-  version: 20
+  version: 19
   includes:
   - yml/mender-base.yml
 
