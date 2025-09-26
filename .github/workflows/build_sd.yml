@@ -30,8 +30,8 @@ jobs:
           chmod +x kas-yocto-beagleplay-ti-build.sh
           ./kas-yocto-beagleplay-ti-build.sh sd
 
-      # Caches sstate and downloads to speed up subsequent builds        
-      - name: Cache sstate + downloads
+      # Caches downloads to speed up subsequent builds        
+      - name: Cache downloads
         uses: actions/cache@v4
         with:
           path: build/downloads
