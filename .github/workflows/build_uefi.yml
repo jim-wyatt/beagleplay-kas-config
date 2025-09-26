@@ -34,10 +34,8 @@ jobs:
       - name: Cache sstate + downloads
         uses: actions/cache@v4
         with:
-          path: |
-            build/sstate-cache
-            build/downloads
-          key: cache-sstate-downloads
+          path: build/downloads
+          key: cache-downloads
       
       # Uploads the generated UEFI Image as a build artifact
       - name: Upload UEFI Image to Github
