@@ -38,6 +38,7 @@ jobs:
             build/downloads
             build/sstate-cache
           key: cache-sstate-downloads
+          base: /srv/actions-runner-linux-x64/.cache
       
       # Uploads the generated UEFI Image as a build artifact
       - name: Upload UEFI Image to Github
