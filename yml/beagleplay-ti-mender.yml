@@ -30,8 +30,8 @@ local_conf_header:
     MENDER_ARTIFACT_NAME = "${IMAGE_BASENAME}-${MACHINE}-UUID_SLUG"
 
   bitbake-caching: |
-    BB_HASHSERVE_UPSTREAM = "wss://hashserv.yoctoproject.org/ws"
-    SSTATE_MIRRORS ?= "file://.* http://sstate.yoctoproject.org/all/PATH;downloadfilename=PATH"
+    BB_HASHSERVE_UPSTREAM = "hashserv.yocto.io:8687"
+    SSTATE_MIRRORS ?= "file://.* https://sstate.yoctoproject.org/all/PATH;downloadfilename=PATH"
     BB_HASHSERVE = "auto"
     BB_SIGNATURE_HANDLER = "OEEquivHash"
 
