@@ -24,10 +24,16 @@ local_conf_header:
     EXTRA_IMAGE_FEATURES += "debug-tweaks package-management"
     IMAGE_FSTYPES:remove = "wic wic.bmap mender.bmap sdimg sdimg.bmap uefi uefi.bmap"
     IMAGE_ROOTFS_EXTRA_SPACE = "3000000"
-    CORE_IMAGE_EXTRA_INSTALL += "btop"
-
+    CORE_IMAGE_EXTRA_INSTALL += "btop minicom python3 python3-pyserial setserial"
+    
   mender-artifact: |
     MENDER_ARTIFACT_NAME = "${IMAGE_BASENAME}-${MACHINE}-UUID_SLUG"
+
+  bitbake-caching: |
+    BB_HASHSERVE_UPSTREAM = "wss://hashserv.yoctoproject.org/ws"
+    SSTATE_MIRRORS ?= "file://.* http://sstate.yoctoproject.org/all/PATH;downloadfilename=PATH"
+    BB_HASHSERVE = "auto"
+    BB_SIGNATURE_HANDLER = "OEEquivHash"
 
 target:
   - core-image-full-cmdline
