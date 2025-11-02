@@ -8,7 +8,7 @@ kas==5.0
 kconfiglib==14.1.0
 newt==0.1.0
 PyYAML==6.0.3
-referencing==0.36.2
+referencing==0.37.0
 rpds-py==0.27.1
 smmap==5.0.2
 typing_extensions==4.15.0
