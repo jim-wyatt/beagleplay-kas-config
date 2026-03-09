@@ -10,5 +10,5 @@ newt==0.1.0
 PyYAML==6.0.3
 rpds-py==0.30.0
 referencing==0.37.0
-smmap==5.0.2
+smmap==5.0.3
 typing_extensions==4.15.0
